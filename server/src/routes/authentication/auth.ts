@@ -13,13 +13,16 @@ router.post("/login", async (req, res) => {
     return;
   }
 
+  const id = await bcrypt.hash(String(user.id), 12);
+  req.session.qid = id;
+
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) {
     res.send("wrong email or password");
     return;
   }
 
-  res.send(user);
+  res.send(req.session);
 });
 
 // register user
