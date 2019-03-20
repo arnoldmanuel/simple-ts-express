@@ -4,6 +4,7 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { router as users } from "./routes/api/users";
 import { router as auth } from "./routes/authentication/auth";
+import { router as profile } from "./routes/users/profile";
 import bodyParser = require("body-parser");
 
 const SESSION_SECRET = "asdsd2344KSDlslmkaksd";
@@ -35,6 +36,7 @@ const startServer = async () => {
   // routes
   app.use("/api/users", users);
   app.use("/auth", auth);
+  app.use("", profile);
 
   app.get("/", (_, res) => {
     res.send("Hello World");
