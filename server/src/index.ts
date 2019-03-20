@@ -36,6 +36,7 @@ const startServer = async () => {
   // routes
   app.use("/api/users", users);
   app.use("/auth", auth);
+
   app.use("", profile);
 
   app.get("/", (_, res) => {
